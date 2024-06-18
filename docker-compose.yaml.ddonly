@@ -1,0 +1,21 @@
+version: '3.3'
+networks:
+  mynetwork:
+    driver: bridge
+
+services:
+  datadog-agent:
+    image: datadog/agent:latest
+    container_name: datadog-agent
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /proc/:/host/proc/:ro
+      - /sys/fs/cgroup/:/host/sys/fs/cgroup:ro
+    environment:
+      - DD_API_KEY=371b8496cb8dd5680a8caee68578128d
+      - DD_APM_ENABLED=true
+      - DD_APM_NON_LOCAL_TRAFFIC=true
+    ports:
+      - '8126:8126'
+    networks:
+      - mynetwork

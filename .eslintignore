@@ -1,0 +1,4 @@
+.nyc_outpur
+coverage
+node_modules
+test
