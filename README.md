@@ -73,22 +73,6 @@ To run this project, make sure that all prerequisites above are installed on you
       - `1`: Elastic APM + Prometheus
       - `2`: Datadog Agent
 
-   3. `PUBLIC_KEY`, `PRIVATE_KEY`, `REFRESH_PUBLIC_KEY` & `REFRESH_PRIVATE_KEY` are the RSA keys which have been encoded into base64 format.
-
-      Steps on how to generate RSA keys pair are as follows:
-      ```
-      $ openssl genrsa -out private_key.pem 4096
-      $ openssl rsa -in private_key.pem -outform PEM -pubout -out public_key.pem
-      ```
-      Above command would result pair of private and public keys. Encode its content into base64 then assign it to `PUBLIC_KEY` and `PRIVATE_KEY` on your `env`
-
-      Do the same things for `REFRESH_PUBLIC_KEY` & `REFRESH_PRIVATE_KEY`
-
-   4. `CIPHER_KEY` should contain 32 characters. The easy way how to generate a cipher key is using the crypto library but please take note that this procedure is not recommended for production as it is not strong enough. Use this in development only.
-      ```
-      $ node
-      > crypto.randomBytes(32).toString('hex')
-      ```
 
 6. Start the server:
    ```
